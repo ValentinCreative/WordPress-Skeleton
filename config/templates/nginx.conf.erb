@@ -1,0 +1,14 @@
+# Redirect www to the main site.
+server {
+  server_name www.serenventures.com;
+  rewrite ^ $scheme://serenventures.com$request_uri redirect;
+}
+
+server {
+	server_name serenventures.com;
+	root /var/www/serenventures.com/current/public;
+
+	include global/restrictions.conf;
+
+	include global/wordpress.conf;
+}
