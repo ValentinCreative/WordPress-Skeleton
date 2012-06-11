@@ -1,0 +1,21 @@
+<% if aliases.any? -%>
+server {
+  access_log <%= shared_path %>/log/nginx-access.log;
+  error_log <%= shared_path %>/log/nginx-access.log;
+
+  server_name <%= aliases.join(' ') %>;
+  rewrite ^ $scheme://<%= domain %>$request_uri redirect;
+}
+
+<% end -%>
+server {
+  access_log <%= shared_path %>/log/nginx-access.log;
+  error_log <%= shared_path %>/log/nginx-access.log;
+
+  server_name <%= domain %>;
+  root <%= current_path %>/public;
+
+  include global/restrictions.conf;
+
+  include global/wordpress.conf;
+}

@@ -1,7 +1,8 @@
 .DS_Store
 .*.swp
 current
+shared
 public/.htaccess
-public/wp-config-local.php
+public/wp-config.php
 public/content/debug.log
 public/content/uploads
